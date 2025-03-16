@@ -1,5 +1,5 @@
 # Projects
 All the locally created projects.
 <br>
-Author - Vivek Singh
+<b>Author - Vivek Singh</b>
 </br>
