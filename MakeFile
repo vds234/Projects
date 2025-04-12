@@ -1,0 +1,31 @@
+# Compiler and Flags
+CXX = g++
+CXXFLAGS = -Iinc  # Include the directory for header files
+
+# Directories
+SRC_DIR = src
+INC_DIR = inc
+OBJ_DIR = obj
+
+# Files
+SOURCES = $(SRC_DIR)/FileReader.cpp $(SRC_DIR)/TxtReader.cpp $(SRC_DIR)/PDFReader.cpp $(SRC_DIR)/DocxReader.cpp main.cpp
+OBJECTS = $(SOURCES:.cpp=.o)
+EXEC = FileReaderApp.exe
+
+# Default target: compile and link the application
+all: $(EXEC)
+
+# Linking the object files to create the final executable
+$(EXEC): $(OBJECTS)
+	$(CXX) $(OBJECTS) -o $(EXEC)
+
+# Rule to compile .cpp files to .o files
+%.o: %.cpp
+	$(CXX) -c $< -o $@ $(CXXFLAGS)
+
+# Clean up generated files (e.g., object files, executable)
+clean:
+	rm -f $(OBJECTS) $(EXEC)
+
+# Phony targets
+.PHONY: all clean
